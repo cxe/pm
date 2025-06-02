@@ -1,4 +1,4 @@
-import { isIdentifier, isNumber, isSpace } from '../string.js';
+import { isIdentifier, isNumber, isSpace } from '../string.mjs';
 
 describe('isIdentifier', () => {
   it('should return the full string for valid identifiers', () => {

@@ -1,25 +1,25 @@
 {
-  "name": "todir",
-  "version": "0.1.1",
+  "name": "@cxe/pm",
+  "version": "0.2.0",
   "description": "A lightweight issue tracker using Markdown files in your Git repository.",
   "keywords": [ "cli", "api", "app", "git", "markdown", "knowledgebase", "issue-tracker" ],
   "author": "Ian Carter (cxe.io)",
   "license": "ISC",
   "public": true,
   "type": "module",
-  "main": "todir.sh",
+  "main": "pm.mjs",
   "bin": {
-    "todir": "./todir.mjs"
+    "pm": "./pm.mjs"
   },
   "scripts": {
     "test": "npx jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cxe/todir.git"
+    "url": "git+https://github.com/cxe/pm.git"
   },
   "bugs": {
-    "url": "https://github.com/cxe/todir/issues"
+    "url": "https://github.com/cxe/pm/issues"
   },
-  "homepage": "https://github.com/cxe/todir#readme"
+  "homepage": "https://github.com/cxe/pm#readme"
 }

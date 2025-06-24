@@ -1,6 +1,6 @@
 import { isIdentifierStartChar } from './string.mjs';
 
-export const parse = (input) => {
+export const param = (input) => {
     const args=[], opts={};
     for(const i in input){
         let item=input[i];

@@ -28,3 +28,7 @@ export const isDigitChar = c => {
   const n = c.charCodeAt(0);
   return n >= CHR_DIGIT_0 && n <= CHR_DIGIT_9;
 };
+
+export const isWhitespaceChar = c => {
+  return c === ' ' || c === '\t' || c === '\n' || c === '\r';
+};

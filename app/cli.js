@@ -1,4 +1,4 @@
-import { isIdentifierStartChar } from './string.mjs';
+import { isIdentifierStartChar } from './string.js';
 
 export const param = (input) => {
     const args=[], opts={};

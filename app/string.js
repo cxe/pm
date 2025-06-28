@@ -37,6 +37,9 @@ export const CHR_QUESTION = 63;
 export const CHR_TILDE = 126;
 export const CHR_CARET = 94;
 export const CHR_SPACE = 32;
+export const CHR_TAB = 9;
+export const CHR_NEWLINE = 10;
+export const CHR_CARRIAGE_RETURN = 13;
 
 export const isIdentifier = s => {
     const n = s.length;
@@ -44,30 +47,33 @@ export const isIdentifier = s => {
     let c = s.charAt(0);
     if (!isIdentifierStartChar(c)) return '';
     for (let i = 1; i < n; ++i) {
-        c = s.charAt(i);
-        if (isWhitespaceChar(s[i])) return s.substring(0, i);
-        if (!isIdentifierChar(c)) return '';
+        const c = s.charCodeAt(i);
+        if (c === CHR_SPACE || c === CHR_TAB || c === CHR_NEWLINE || c === CHR_CARRIAGE_RETURN) {
+            return s.substring(0, i);
+        }
+        if (!isIdentifierChar(s)) return '';
     }
     return s;
 };
 
-export const isIdentifierStartChar = c => {
-  const n = c.charCodeAt(0);
+export const isIdentifierStartChar = s => {
+  const c = s.charCodeAt(0);
   return (
-    (n >= CHR_UPPER_A && n <= CHR_UPPER_Z)
-    || (n >= CHR_LOWER_A && n <= CHR_LOWER_Z)
-    || n === CHR_DOLLAR
-    || n === CHR_UNDERSCORE
+    (c >= CHR_UPPER_A && c <= CHR_UPPER_Z)
+    || (c >= CHR_LOWER_A && c <= CHR_LOWER_Z)
+    || c === CHR_DOLLAR
+    || c === CHR_UNDERSCORE
   );
 };
 
-export const isIdentifierChar = c => isIdentifierStartChar(c) || isDigitChar(c);
+export const isIdentifierChar = s => isIdentifierStartChar(s) || isDigitChar(s);
 
-export const isDigitChar = c => {
-  const n = c.charCodeAt(0);
-  return n >= CHR_DIGIT_0 && n <= CHR_DIGIT_9;
+export const isDigitChar = s => {
+  const c = s.charCodeAt(0);
+  return c >= CHR_DIGIT_0 && c <= CHR_DIGIT_9;
 };
 
-export const isWhitespaceChar = c => {
-  return c === ' ' || c === '\t' || c === '\n' || c === '\r';
+export const isWhitespaceChar = s => {
+    const c = s.charCodeAt(0);
+    return c === CHR_SPACE || c === CHR_TAB || c === CHR_NEWLINE || c === CHR_CARRIAGE_RETURN;
 };

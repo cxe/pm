@@ -56,6 +56,27 @@ export const isIdentifier = s => {
     return s;
 };
 
+export const isNumber = s => {
+    const n = s.length;
+    if (n === 0) return '';
+    let c = s.charCodeAt(0);
+    if (c === CHR_HYPHEN) ++i;
+    if (c >= CHR_DIGIT_0 && c <= CHR_DIGIT_9) {
+        for (let i = 0; i < n; ++i) {
+            c = s.charCodeAt(i);
+            if (c >= CHR_DIGIT_0 && c <= CHR_DIGIT_9) continue;
+            if (c === CHR_DOT) {
+                while (i < n) {
+                    c = s.charCodeAt(++i);
+                    if (c < CHR_DIGIT_0 || c > CHR_DIGIT_9) break;
+                }
+            }
+            return s.substring(0, i);
+        }
+    }
+    return '';
+};
+
 export const isIdentifierStartChar = s => {
   const c = s.charCodeAt(0);
   return (

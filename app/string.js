@@ -77,6 +77,24 @@ export const isNumber = s => {
     return '';
 };
 
+export const isSpace = s => {
+    const n = s.length;
+    if (n === 0) return '';
+    let c = s.charCodeAt(0);
+    if ( c === CHR_SPACE || c === CHR_TAB || c === CHR_NEWLINE || c === CHR_CARRIAGE_RETURN) {
+        let i = 1;
+        while (i < n) {
+            c = s.charCodeAt(i);
+            if ( c !== CHR_SPACE && c !== CHR_TAB && c !== CHR_NEWLINE && c !== CHR_CARRIAGE_RETURN) {
+                break;
+            }
+            ++i;
+        }
+        return s.substring(0, i);
+    }
+    return '';
+};
+
 export const isIdentifierStartChar = s => {
   const c = s.charCodeAt(0);
   return (

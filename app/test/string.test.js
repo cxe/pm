@@ -1,4 +1,4 @@
-import { isIdentifier, isNumber } from '../string.js';
+import { isIdentifier, isNumber, isSpace } from '../string.js';
 
 describe('isIdentifier', () => {
   it('should return the full string for valid identifiers', () => {
@@ -41,5 +41,26 @@ describe('isNumber', () => {
     expect(isNumber('--123')).toBe('');
     expect(isNumber('12.34.56')).toBe('');
     expect(isNumber('')).toBe('');
+  });
+});
+
+describe('isSpace', () => {
+  it('should return the full string for strings with only whitespace', () => {
+    expect(isSpace('   ')).toBe('   ');
+    expect(isSpace('\t\t')).toBe('\t\t');
+    expect(isSpace('\n\n')).toBe('\n\n');
+    expect(isSpace('\r\r')).toBe('\r\r');
+    expect(isSpace(' \t\n\r')).toBe(' \t\n\r');
+  });
+
+  it('should return the valid whitespace prefix', () => {
+    expect(isSpace(' \tabc')).toBe(' \t');
+    expect(isSpace('\n123')).toBe('\n');
+  });
+
+  it('should return an empty string for strings starting with non-whitespace', () => {
+    expect(isSpace('abc')).toBe('');
+    expect(isSpace('  a')).toBe('');
+    expect(isSpace('')).toBe('');
   });
 });

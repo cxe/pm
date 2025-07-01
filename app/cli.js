@@ -1,6 +1,6 @@
 import { isIdentifierStartChar } from './string.js';
 
-export const param = (input) => {
+export const params = (input) => {
     const args=[], opts={};
     for(const i in input){
         let item=input[i];
